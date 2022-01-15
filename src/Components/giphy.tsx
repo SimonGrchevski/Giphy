@@ -2,20 +2,13 @@ import React from 'react';
 import { fetchGiphy } from '../redux/reducers/giphyReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from '../redux/store';
+import { GiphyList } from './giphyList';
 
 const Giphy = () => {
 
   const dispatch = useDispatch();
-  const state = useSelector((state: State) => state);
+  const giphs = useSelector((state: State) => state.giphs);
 
-  // let [state,changeState] = useState([]);
-  
-
-  
-  (async()=> {
-    const newS = await state;
-    console.log(newS);
-  })();
   const handleSubmit = ():void => {
     
     dispatch( fetchGiphy() );
@@ -28,7 +21,9 @@ const Giphy = () => {
       <input type="button" value ="search" onClick={() => handleSubmit()} /> 
     </form>
 
-    <iframe src={state.giphs[0]} width="480" height="480" frameBorder="0" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cat-cats-shurly-l2JJDdD7cv4xdGGis">via GIPHY</a></p>
+    <GiphyList giphs={giphs} />
+
+    
     </div>
     
   )
