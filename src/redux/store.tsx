@@ -3,12 +3,11 @@ import thunk from 'redux-thunk';
 import giphyReducer from './reducers/giphyReducer';
 
 const reducer = combineReducers({
-giphy: giphyReducer
+  giphs: giphyReducer
 });
 
 const store = createStore(reducer,applyMiddleware(thunk));
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
+export type State = ReturnType<typeof reducer>
 
 export default store; 

@@ -1,23 +1,22 @@
 import React from 'react';
 import { fetchGiphy } from '../redux/reducers/giphyReducer';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import type { RootState, AppDispatch } from '../redux/store';
-
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { State } from '../redux/store';
 
 const Giphy = () => {
 
-  const useAppDispatch = () => useDispatch<AppDispatch>();
-  let [state,changeState] = useState([]);
+  const dispatch = useDispatch();
+  const state = useSelector((state: State) => state);
+
+  // let [state,changeState] = useState([]);
   
-  const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
   
   (async()=> {
-    await store;
-  // changeState(store.data[0]);
-    console.log(giphy);
+    const newS = await state;
+    console.log(newS);
   })();
-  const handleSubmit = ():any => {
+  const handleSubmit = ():void => {
     
     dispatch( fetchGiphy() );
   }
@@ -29,7 +28,7 @@ const Giphy = () => {
       <input type="button" value ="search" onClick={() => handleSubmit()} /> 
     </form>
 
-    <iframe src="" width="480" height="480" frameBorder="0" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cat-cats-shurly-l2JJDdD7cv4xdGGis">via GIPHY</a></p>
+    <iframe src={state.giphs[0]} width="480" height="480" frameBorder="0" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/cat-cats-shurly-l2JJDdD7cv4xdGGis">via GIPHY</a></p>
     </div>
     
   )
