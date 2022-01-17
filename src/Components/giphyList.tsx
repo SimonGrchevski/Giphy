@@ -11,7 +11,7 @@ export const GiphyList = (props: any) => {
   }
   const giphs = getGiphs(props.giphs);
   return (
-    <ul>
+    <ul className='giphs-container d-flex align-items-center flex-column p-4'>
       {giphs.length !==0 ? giphs : <h1>No gifs found!</h1>}
     </ul>
     

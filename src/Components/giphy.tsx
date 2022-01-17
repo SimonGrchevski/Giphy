@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useRef, useEffect }  from 'react';
 import { fetchGiphy,fetchMoreGiphy } from '../redux/reducers/giphyReducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { State } from '../redux/store';
 import { GiphyList } from './giphyList';
-import { useRef } from 'react';
 
 const Giphy = () => {
 
@@ -24,6 +23,10 @@ const Giphy = () => {
     },3000)
   }
 
+  useEffect(() => {
+    dispatch(fetchGiphy('happy'));
+  },[]);
+
   window.addEventListener('scroll',() => {
     if(shouldLoad.current)
     {
@@ -37,19 +40,18 @@ const Giphy = () => {
   });
 
   return (
-    <div>
+    <>
+      <header className="sticky-top d-flex justify-content-center p-5">
+        <input type="text" className="input-queue w-25 p-1 rounded outline-border-none" 
+          placeholder="search gifs"  onChange={(e) => queue.current = e.target.value}/>
+        <input type="button" className="search-btn outline-border-none rounded p-2" value ="search" onClick= {() => handleSubmit() }/> 
+      </header>
+      <main>
+        <GiphyList giphs={data} />
+      </main>
 
-    <form>
-      <input type="text" className="queue" 
-        placeholder="search gifs" onChange={(e) => queue.current = e.target.value}/>
-      <input type="button" value ="search" onClick= {() => handleSubmit() }/> 
-    </form>
-    
+    </>
 
-    <GiphyList giphs={data} />
-
-    
-    </div>
     
   )
 }
