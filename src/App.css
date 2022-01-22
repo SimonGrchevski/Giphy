@@ -1,0 +1,42 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a,
+li {
+  text-decoration: none;
+  list-style-type: none;
+}
+
+header {
+  background-color: rgba(0, 0, 0, 0.932);
+}
+
+.outline-border-none {
+  border: none;
+  outline: none;
+}
+
+.input-queue {
+  color: rgb(22, 21, 21);
+}
+
+.input-queue {
+  border-color: inherit;
+}
+
+.search-btn {
+  background-color: #e2dddd;
+  margin-left: 10px;
+}
+
+.giphs-container {
+  background: url('./pexels-photo-220182.jpeg');
+  background-size: contain;
+  background-repeat: repeat;
+  min-height: calc(100vh - 6rem);
+}
